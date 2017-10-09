@@ -6,8 +6,11 @@ export default function manageTodo(state = {
   switch (action.type) {
     case 'ADD_TODO':
       id++;
-      const todo = Object.assign({}, action.todo, { id: id });
+      const todo = Object.assign({}, action.todo, { id: id }); //Whenever you add an item you now also assign them an id.
       return { todos: state.todos.concat(todo) };
+    case 'DELETE_TODO':
+      const todos = state.todos.filter(todo => todo.id !== action.id);
+      return  { todos }
     default:
       return state;
   }
